@@ -1,0 +1,2 @@
+allnatural = angular.module('allnatural',[
+])
