@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>All Natural</title>
-		<%= stylesheet_link_tag "normalize" %>
-		<%= stylesheet_link_tag "component" %>
-	    <%= stylesheet_link_tag "demo" %>
-	</head>
-	<body class="demo-1">
-		<div id="container" class="container intro-effect-push">
-			<header class="header">
-				<div class="bg-img"><%= image_tag('2.jpg') %></div>
-				<div class="title">
-					<h1>All Natural</h1>
-				</div>
-			</header>
-			<button class="trigger" data-info="Enter"><span>Trigger</span></button>
-			<div class="title">
-				<nav class="codrops-demos">
-						<a class="current-demo" href="/kitchens">Kitchen</a>
-						<a href="/laundry">Laundry</a>
-						<a href="/home_cleaning">Home Cleaning</a>
-				</nav>
-				<h1>All Natural</h1>
-			</div>
-			<div ng-app="allnatural">
-			  <div class="view-container">
-			    <div ng-view class="view-frame animate-view"></div>
-			  </div>
-			</div>
-		</div><!-- /container -->
-		<%= javascript_include_tag 'classie' %>
-		<script>
-			(function() {
+(function() {
 
 				// detect if IE : from http://stackoverflow.com/a/16657946		
 				var ie = (function(){
@@ -174,6 +138,3 @@
 				window.addEventListener( 'scroll', scrollPage );
 				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
 			})();
-		</script>
-	</body>
-</html>
