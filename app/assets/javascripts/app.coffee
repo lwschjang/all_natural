@@ -2,12 +2,21 @@ allnatural = angular.module('allnatural',[
   'templates',
   'ngRoute',
   'controllers',
-  ])
+])
+
+allnatural.config([ '$routeProvider',
+  ($routeProvider)->
+    $routeProvider
+      .when('/',
+        templateUrl: "index.html"
+        controller: 'ProductsController'
+      )
+])
 
 products = [
   {
     id: 1
-    name: 'All-Purpose Spray'
+    name: 'All Purpose Spray'
   },
   {
     id: 2
@@ -38,29 +47,14 @@ products = [
     name: 'Product 8',
   },
 ]
-
-
-allnatural.config([ '$routeProvider', 'flashProvider',
-  ($routeProvider,flashProvider)->
-
-    flashProvider.errorClassnames.push("alert-danger")
-    flashProvider.warnClassnames.push("alert-warning")
-    flashProvider.infoClassnames.push("alert-info")
-    flashProvider.successClassnames.push("alert-success")
-    $routeProvider
-      .when('/',
-        templateUrl: "index.html"
-        controller: 'ProductsController'
-        ).when('/products/new',
-        templateUrl: "form.html"
-        controller: 'ProductsController'
-        ).when('/products/:productId',
-        templateUrl: "show.html"
-        controller: 'ProductsController'
-        ).when('/products/:productId/edit',
-        templateUrl: "form.html"
-       controller: 'ProductsController'
-      )
-])
-
 controllers = angular.module('controllers',[])
+controllers.controller("ProductsController", [ '$scope', '$routeParams', '$location',
+  ($scope,$routeParams,$location)->
+    $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
+
+    if $routeParams.keywords
+      keywords = $routeParams.keywords.toLowerCase()
+      $scope.products = products.filter (product)-> product.name.toLowerCase().indexOf(keywords) != -1
+    else
+      $scope.products = []
+])
