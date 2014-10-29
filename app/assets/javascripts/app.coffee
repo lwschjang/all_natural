@@ -2,15 +2,8 @@ allnatural = angular.module('allnatural',[
   'templates',
   'ngRoute',
   'controllers',
-])
-
-allnatural.config([ '$routeProvider',
-  ($routeProvider)->
-    $routeProvider
-      .when('/',
-        templateUrl: "index.html"
-        controller: 'ProductsController'
-      )
+  'angular-flash.service',
+  'angular-flash.flash-alert-directive'
 ])
 
 products = [
@@ -31,14 +24,29 @@ products = [
     name: 'Mr. Clean',
   },
 ]
-controllers = angular.module('controllers',[])
-controllers.controller("ProductsController", [ '$scope', '$routeParams', '$location',
-  ($scope,$routeParams,$location)->
-    $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
 
-    if $routeParams.keywords
-      keywords = $routeParams.keywords.toLowerCase()
-      $scope.products = products.filter (product)-> product.name.toLowerCase().indexOf(keywords) != -1
-    else
-      $scope.products = []
+
+allnatural.config([ '$routeProvider', 'flashProvider',
+  ($routeProvider,flashProvider)->
+
+    flashProvider.errorClassnames.push("alert-danger")
+    flashProvider.warnClassnames.push("alert-warning")
+    flashProvider.infoClassnames.push("alert-info")
+    flashProvider.successClassnames.push("alert-success")
+    $routeProvider
+      .when('/',
+        templateUrl: "index.html"
+        controller: 'ProductsController'
+        ).when('/products/new',
+        templateUrl: "form.html"
+        controller: 'ProductsController'
+        ).when('/products/:productId',
+        templateUrl: "show.html"
+        controller: 'ProductsController'
+        ).when('/products/:productId/edit',
+        templateUrl: "form.html"
+       controller: 'ProductsController'
+      )
 ])
+
+controllers = angular.module('controllers',[])

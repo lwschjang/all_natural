@@ -5,10 +5,11 @@
   <form>
     <div class="form-group col-md-6 col-md-offset-3">
       <label for="keywords" class="sr-only">Keywords</label>
-      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Recipe name, e.g. Baked Potato">
+      <input ng-model="keywords" name="keywords" type="text" autofocus class="form-control" placeholder="Product name, e.g. All-Purpose Spray">
     </div>
     <div class="form-group col-md-6 col-md-offset-3 text-center">
       <button ng-click="search(keywords)" class="btn btn-primary btn-lg">Search</button>
+      <button ng-click="newProduct()" class="btn btn-info btn-lg">New Product…</button>
     </div>
   </form>
 </section>
@@ -18,12 +19,18 @@
   <ul class="list-unstyled">
     <li ng-repeat="product in products">
       <section class="well col-md-6 col-md-offset-3">
-        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href="#">{{product.name}}</a></h1>
+        <h1 class="h3 col-md-6 text-right" style="margin-top: 0"><a href ng-click="view(product.id)" >{{product.name}}</a></h1>
         <div class="col-md-6">
-          <button class="btn btn-info">Edit</button>
-          <button class="btn btn-danger">Delete</button>
+          <button ng-click="edit(product.id)" class="btn btn-info">Edit</button>
         </div>
       </section>
     </li>
   </ul>
+</section>
+<section>
+<ul class="list">
+      <% @productss.each do |product| %>
+        <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+      <% end %>
+    </ul>
 </section>

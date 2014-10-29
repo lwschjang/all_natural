@@ -1,0 +1,1 @@
+json.(product, :id, :name, :desc, :ingredients, :used_for)
