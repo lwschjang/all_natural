@@ -19,3 +19,10 @@
 
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+.view-container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 700px;
+	
+}
