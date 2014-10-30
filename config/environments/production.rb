@@ -32,7 +32,9 @@ Rails.application.configure do
   config.assets.precompile += %w( demo.css )
   config.assets.precompile += %w( normalize.css )
   config.assets.precompile += %w( classie.js )
-
+  config.assets.precompile += %w( templates/index.html )
+  config.assets.precompile += %w( controllers/ProductController.coffee )
+  config.assets.precompile += %w( app.coffee )
   # Generate digests for assets URLs.
   config.assets.digest = true
 
