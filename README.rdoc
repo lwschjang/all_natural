@@ -1,12 +1,12 @@
-# All Natural
+All Natural
 
-####Author: Leamia "Will" Schjang 
+Author: Leamia "Will" Schjang 
 
-####*Overview:* 
+*Overview:* 
 
 WDI Final Project: An app to help users find natural alternatives to home products
 
-####*Technologies Used:* 
+*Technologies Used:* 
 AngularJS
 Rails
 Javascript
@@ -14,14 +14,14 @@ CoffeeScript
 PostgreSQL
 SASS
 
-####*GEMs Used*
+*GEMs Used*
 jquery-rails
 jbuilder
 bower-rails
 angular-rails-templates
 sass 
 
-[Live Link](https://secret-reef-1276.herokuapp.com)
+Live Link: https://secret-reef-1276.herokuapp.com    (failed to get the app to upload to heroku properly, so I ended up switching to a different format in a different repository)
 
 
 
